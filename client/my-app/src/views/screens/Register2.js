@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet,
   SafeAreaView,
-  Image,
+  ImageBackground,
   Pressable,
   TextInput,
   TouchableOpacity,
@@ -13,17 +13,18 @@ import {
 } from "react-native";
 import COLORS from "../../consts/colors";
 import axios from "axios";
-const Register = ({ navigation }) => {
+const Register2 = ({ navigation }) => {
   const [data, setData] = useState({
     userName:"",
     email: "",
     phone: "",
     empId: "",
+    designation:"",
     password: "",
     dob:"",
   });
 
-  const register = () => {
+  const register1 = () => {
     axios
       .post("http://192.168.1.37:7000/register", data)
       .then((response) => {
@@ -41,11 +42,17 @@ const Register = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+        <ImageBackground
+          style={style.image}
+          source={require("../../assets/b3.jpg")}
+          resizeMethod="auto"
+        >
       <StatusBar translucent backgroundColor={COLORS.tranparent} />
       <View style={{ top: 60, flexDirection: "column" }}>
-        <View style={{ paddingHorizontal: 20, paddingTop: 20 }}>
+        <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
           <View style={{ alignSelf: "center" }}>
-            <Text style={style.title}>SITE MANAGEMENT</Text>
+          <Text style={style.title}>      WORKER'S </Text>
+            <Text style={style.title}>REGISTERATION PAGE</Text>
           </View>
         </View>
         <View style={{ top: 40 }}>
@@ -69,6 +76,11 @@ const Register = ({ navigation }) => {
             style={style.empId}
             placeholder="Employee ID"
             onChangeText={(text) => setData({ ...data, empId: text })}
+          />
+          <TextInput
+            style={style.designation}
+            placeholder="Designation"
+            onChangeText={(text) => setData({ ...data, designation: text })}
           /> 
            <TextInput
             style={style.password}
@@ -86,45 +98,30 @@ const Register = ({ navigation }) => {
            
         </View>
 
-        <TouchableOpacity style={style.btn} onPress={register}>
+        <TouchableOpacity style={style.btn} onPress={register1}>
           <Text style={{color:"white"}}>SIGN UP</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={{ alignSelf: "center", paddingEnd: 20, top: 150 }}>
-            Sign in here!
+        <TouchableOpacity onPress={() => navigation.navigate("Login2")}>
+            <Text style={{ alignSelf: "center", paddingEnd: 20, top: 120 ,color: "red" }}> Already Registered</Text>
+          <Text style={{ alignSelf: "center", paddingEnd: 20, top: 125 }}>
+            Login here!
           </Text>
         </TouchableOpacity>
       </View>
-      
+      </ImageBackground>
     </SafeAreaView>
   );
 };
 
 const style = StyleSheet.create({
-  image: {
-    height: 420,
-    width: "100%",
-    borderBottomLeftRadius: 100,
-  },
-  indicatorContainer: {
-    height: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-  },
-  indicator: {
-    height: 3,
-    width: 30,
-    backgroundColor: COLORS.grey,
-    borderRadius: 5,
-    marginHorizontal: 5,
-  },
-  indicatorActive: {
-    backgroundColor: COLORS.dark,
-  },
+    image: {
+        height: 420,
+        width: "100%",
+        borderBottomLeftRadius: 100,
+      },
   btn: {
-    top: 140,
-    height: 60,
+    top: 105,
+    height: 50,
     marginHorizontal: 20,
     backgroundColor: "black",
     borderRadius: 15,
@@ -132,7 +129,7 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   userName: {
-    top: 10,
+    top: -15,
     height: 60,
     paddingStart: 12,
     marginHorizontal: 20,
@@ -165,7 +162,7 @@ const style = StyleSheet.create({
   //   elevation: 54,
   // },
   email: {
-    top: 20,
+    top: -5,
     paddingStart: 12,
     height: 60,
     marginHorizontal: 20,
@@ -176,7 +173,7 @@ const style = StyleSheet.create({
     elevation: 54,
   },
   phone: {
-    top: 30,
+    top: 5,
     paddingStart: 12,
     height: 60,
     marginHorizontal: 20,
@@ -188,7 +185,18 @@ const style = StyleSheet.create({
   },
   
   empId: {
-    top: 40,
+    top: 15,
+    paddingStart: 12,
+    height: 60,
+    marginHorizontal: 20,
+    backgroundColor: "#FBEDAD",
+    borderRadius: 15,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 54,
+  },
+  designation: {
+    top: 25,
     paddingStart: 12,
     height: 60,
     marginHorizontal: 20,
@@ -199,7 +207,7 @@ const style = StyleSheet.create({
     elevation: 54,
   },
   password: {
-    top: 50,
+    top: 35,
     height: 60,
     paddingStart: 12,
     marginHorizontal: 20,
@@ -209,17 +217,7 @@ const style = StyleSheet.create({
     alignItems: "center",
     elevation: 54,
   },
-  // designation: {
-  //   top: 60,
-  //   paddingStart: 12,
-  //   height: 60,
-  //   marginHorizontal: 20,
-  //   backgroundColor: "#FBEDAD",
-  //   borderRadius: 15,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   elevation: 54,
-  // },
+  
   // address: {
   //   top: 70,
   //   paddingStart: 12,
@@ -232,7 +230,7 @@ const style = StyleSheet.create({
   //   elevation: 54,
   // },
   dob: {
-    top: 60,
+    top: 45,
     paddingStart: 12,
     height: 60,
     marginHorizontal: 20,
@@ -242,7 +240,6 @@ const style = StyleSheet.create({
     alignItems: "center",
     elevation: 54,
   },
-  title: { fontSize: 32, fontWeight: "bold" },
-  textStyle: { fontSize: 16, color: COLORS.grey },
+  title: { fontSize: 25, fontWeight: "bold" }
 });
-export default Register;
+export default Register2;

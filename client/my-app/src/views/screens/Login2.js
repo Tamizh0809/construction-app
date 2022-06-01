@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet,
   SafeAreaView,
-  Image,
+  ImageBackground,
   Pressable,
   TextInput,
   TouchableOpacity,
@@ -14,7 +14,7 @@ import {
 import axios from "axios";
 
 import COLORS from "../../consts/colors";
-const Login = ({ navigation }) => {
+const Login2 = ({ navigation }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -37,11 +37,16 @@ const Login = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+         <ImageBackground
+          style={style.image}
+          source={require("../../assets/b5.jpg")}
+          resizeMethod="auto"
+        >
       <StatusBar translucent backgroundColor={COLORS.tranparent} />
       <View style={{ top: 160, flexDirection: "column" }}>
         <View style={{ paddingHorizontal: 20, paddingTop: 20 }}>
           <View style={{ alignSelf: "center" }}>
-            <Text style={style.title}>SITE MANAGEMENT</Text>
+            <Text style={style.title}>WORKER'S LOGIN</Text>
           </View>
         </View>
         <View style={{ top: 40 }}>
@@ -66,12 +71,13 @@ const Login = ({ navigation }) => {
         <TouchableOpacity style={style.btn} onPress={Login}>
           <Text style={{ color: "white" }}>LOGIN</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Register2")}>
           <Text style={{ alignSelf: "center", paddingEnd: 20, top: 150 }}>
             Register here!
           </Text>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -154,4 +160,4 @@ const style = StyleSheet.create({
   title: { fontSize: 32, fontWeight: "bold" },
   textStyle: { fontSize: 16, color: COLORS.grey },
 });
-export default Login;
+export default Login2;

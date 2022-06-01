@@ -126,7 +126,7 @@ const style = StyleSheet.create({
   },
   btn1: {
     paddingStart: 12,
-    top: 12,
+    top: 200,
     height: 60,
     marginHorizontal: 20,
     backgroundColor: "black",
@@ -136,7 +136,7 @@ const style = StyleSheet.create({
 
   },
   btn2: {
-    top: 32,
+    top: 220,
     paddingStart: 12,
     height: 60,
     marginHorizontal: 20,
@@ -148,7 +148,7 @@ const style = StyleSheet.create({
 
   btn3: {
     paddingStart: 12,
-    top: 50,
+    top: 240,
     height: 60,
     marginHorizontal: 20,
     backgroundColor: "black",

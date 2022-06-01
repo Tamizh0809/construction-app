@@ -20,19 +20,12 @@ const OnBoardScreen = ({ navigation }) => {
         style={style.image}
       />
 
-      {/* Indicator container */}
-      {/* <View style={style.indicatorContainer}>
-        <View style={style.indicator} />
-        <View style={style.indicator} />
-        <View style={[style.indicator, style.indicatorActive]} />
-      </View> */}
-
-      {/* Title and text container */}
+     
       <View style={{ paddingHorizontal: 20 ,paddingTop: 50 }}>
-        {/* Title container */}
+        
         <View>
           <Text style={style.title}>SITE</Text>
-          <Text style={style.title}>WATCH </Text>
+          <Text style={style.title}>MANAGEMENT</Text>
         </View>
 
 
@@ -50,7 +43,7 @@ const OnBoardScreen = ({ navigation }) => {
         }}
       >
         {/* button */}
-        <Pressable onPress={() => navigation.navigate("Login")}>
+        <Pressable onPress={() => navigation.navigate("main")}>
           <View style={style.btn}>
             <Text style={{ color: "white" }}>Get Start</Text>
           </View>
